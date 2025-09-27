@@ -29,12 +29,11 @@ jobs:
 
       - name: Deploy to server
         env:
-          SSH_KEY: ${{ secrets.EC2_SSH_KEY }}   # your EC2 private key stored as a secret
+          SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
         run: |
-          # Create the key file on the runner
-          printf "%s\n" "$SSH_KEY" > ~/ec2_key.pem
-          chmod 400 ~/ec2_key.pem
+          # Write the key to the runner's temp folder
+          printf "%s\n" "$SSH_KEY" > $RUNNER_TEMP/ec2_key.pem
+          chmod 400 $RUNNER_TEMP/ec2_key.pem
 
           # Use the key to rsync files to EC2
-          rsync -avz -e "ssh -i ~/ec2_key.pem -o StrictHostKeyChecking=no" dist/ ubuntu@13.51.241.12:/var/www/frontend/
-
+          rsync -avz -e "ssh -i $RUNNER_TEMP/ec2_key.pem -o StrictHostKeyChecking=no" dist/ ubuntu@13.51.241.12:/var/www/frontend/
