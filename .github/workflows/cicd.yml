@@ -7,7 +7,6 @@ on:
 jobs:
   build:
     runs-on: self-hosted
-
     strategy:
       matrix:
         node-version: [22.x]
@@ -29,9 +28,9 @@ jobs:
           VITE_API_URL: ${{ secrets.VITE_API_URL }}
 
       - name: Deploy to server
-        run: rsync -avz dist/ ubuntu@YOUR_EC2_IP:/var/www/frontend/
         env:
-         VITE_API_URL: ${{ secrets.VITE_API_URL }}
-        
-
-
+          SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
+        run: |
+          echo "$SSH_KEY" > ~/ec2_key.pem
+          chmod 400 ~/ec2_key.pem
+          rsync -avz -e "ssh -i ~/ec2_key.pem -o StrictHostKeyChecking=no" dist/ ubuntu@13.51.241.12:/var/www/frontend/
