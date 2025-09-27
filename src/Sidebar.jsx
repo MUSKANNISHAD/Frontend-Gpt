@@ -8,7 +8,7 @@ function Sidebar() {
 
     const getAllThreads = async () => {
         try {
-            const response = await fetch("http://ec2-13-51-241-12.eu-north-1.compute.amazonaws.com/api/thread");
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/thread`);
            const res = await response.json();
 
           if (Array.isArray(res)) {
@@ -45,8 +45,8 @@ function Sidebar() {
         setCurrThreadId(newThreadId);
 
         try {
-            
-            const response = await fetch(`http://ec2-13-51-241-12.eu-north-1.compute.amazonaws.com/api/thread/${newThreadId}`);
+
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/thread/${newThreadId}`);
             const res = await response.json();
             console.log(res);
             setPrevChats(res);
@@ -59,7 +59,7 @@ function Sidebar() {
 
     const deleteThread = async (threadId) => {
         try {
-            const response = await fetch(`http://ec2-13-51-241-12.eu-north-1.compute.amazonaws.com/api/thread/${threadId}`, {method: "DELETE"});
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/thread/${threadId}`, {method: "DELETE"});
             const res = await response.json();
             console.log(res);
 

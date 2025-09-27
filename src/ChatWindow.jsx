@@ -10,31 +10,37 @@ function ChatWindow() {
     const [isOpen, setIsOpen] = useState(false);
 
     const getReply = async () => {
-        setLoading(true);
-        setNewChat(false);
+    setLoading(true);
+    setNewChat(false);
 
-        console.log("message ", prompt, " threadId ", currThreadId);
-        const options = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                message: prompt,
-                threadId: currThreadId
-            })
-        };
+    const options = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            message: prompt,
+            threadId: currThreadId
+        })
+    };
 
-        try {
-            const response = await fetch("http://ec2-13-51-241-12.eu-north-1.compute.amazonaws.com/api/chat", options);
-            const res = await response.json();
-            console.log(res);
-            setReply(res.reply);
-        } catch(err) {
-            console.log(err);
+    try {
+        // Correct endpoint is /chat
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/chat`, options);
+
+        if (!response.ok) {
+            console.error("Server error:", response.status, await response.text());
+            setLoading(false);
+            return;
         }
-        setLoading(false);
+
+        const res = await response.json();
+        console.log(res);
+        setReply(res.reply);
+    } catch(err) {
+        console.log(err);
     }
+    setLoading(false);
+}
+
 
     //Append new chat to prevChats
     useEffect(() => {
