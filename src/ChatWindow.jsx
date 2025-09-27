@@ -91,7 +91,7 @@ function ChatWindow() {
                     <div id="submit" onClick={getReply}><i className="fa-solid fa-paper-plane"></i></div>
                 </div>
                 <p className="info">
-                    SigmaGPT can make mistakes. Check important info. See Cookie Preferences.
+                    MyGPT can make mistakes. Check important info. See Cookie Preferences.
                 </p>
             </div>
         </div>
