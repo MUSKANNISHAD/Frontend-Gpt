@@ -28,8 +28,10 @@ jobs:
         env:
           VITE_API_URL: ${{ secrets.VITE_API_URL }}
 
-      - name: Deploy - example copy to server
+      - name: Deploy to server
         run: rsync -avz dist/ ubuntu@YOUR_EC2_IP:/var/www/frontend/
         env:
          VITE_API_URL: ${{ secrets.VITE_API_URL }}
+        
+
 
