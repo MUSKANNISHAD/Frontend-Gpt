@@ -123,3 +123,6 @@ input:focus {
     background-color: rgba(180, 180, 180, 0.1);
     border-radius: 6px;
 }
+.info .link{
+    text-decoration: underline;
+}

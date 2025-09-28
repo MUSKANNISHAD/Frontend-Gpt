@@ -97,7 +97,7 @@ function ChatWindow() {
                     <div id="submit" onClick={getReply}><i className="fa-solid fa-paper-plane"></i></div>
                 </div>
                 <p className="info">
-                    MyGPT can make mistakes. Check important info. See Cookie Preferences.
+                    MyGPT can make mistakes. Check important info. See <span className="link">Cookie Preferences</span>.
                 </p>
             </div>
         </div>
