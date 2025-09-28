@@ -8,7 +8,8 @@ function Sidebar() {
 
     const getAllThreads = async () => {
         try {
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/thread`);
+            // const response = await fetch(`${import.meta.env.VITE_API_URL}/thread`);
+            const response=await fetch(`http://ec2-13-51-241-12.eu-north-1.compute.amazonaws.com:8080/api/thread`);
            const res = await response.json();
 
           if (Array.isArray(res)) {
@@ -46,7 +47,8 @@ function Sidebar() {
 
         try {
 
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/thread/${newThreadId}`);
+            // const response = await fetch(`${import.meta.env.VITE_API_URL}/thread/${newThreadId}`);
+            const response=await fetch(`http://ec2-13-51-241-12.eu-north-1.compute.amazonaws.com:8080/api/thread/${newThreadId}`);
             const res = await response.json();
             console.log(res);
             setPrevChats(res);
@@ -59,7 +61,8 @@ function Sidebar() {
 
     const deleteThread = async (threadId) => {
         try {
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/thread/${threadId}`, {method: "DELETE"});
+            // const response = await fetch(`${import.meta.env.VITE_API_URL}/thread/${threadId}`, {method: "DELETE"});
+            const response=await fetch(`http://ec2-13-51-241-12.eu-north-1.compute.amazonaws.com:8080/api/thread/${threadId}`, {method: "DELETE"});
             const res = await response.json();
             console.log(res);
 
@@ -78,7 +81,8 @@ function Sidebar() {
     return (
         <section className="sidebar">
             <button onClick={createNewChat}>
-                <img src="src/assets/blacklogo.png" alt="gpt logo" className="logo"></img>
+              <i className="fa-brands fa-openai Smile"></i>
+                {/* <img src="src/assets/blacklogo.png" alt="gpt logo" className="logo"></img> */}
                 <span><i className="fa-solid fa-pen-to-square"></i></span>
             </button>
 
