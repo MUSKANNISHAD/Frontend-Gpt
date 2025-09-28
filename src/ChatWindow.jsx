@@ -23,8 +23,7 @@ function ChatWindow() {
     };
 
     try {
-        // Correct endpoint is /chat
-        // const response = await fetch(`${import.meta.env.VITE_API_URL}/chat`, options);
+       
         const response=await fetch(`http://ec2-13-51-241-12.eu-north-1.compute.amazonaws.com:8080/api/chat`, options);
 
         if (!response.ok) {

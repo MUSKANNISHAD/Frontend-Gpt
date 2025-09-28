@@ -8,7 +8,6 @@ function Sidebar() {
 
     const getAllThreads = async () => {
         try {
-            // const response = await fetch(`${import.meta.env.VITE_API_URL}/thread`);
             const response=await fetch(`http://ec2-13-51-241-12.eu-north-1.compute.amazonaws.com:8080/api/thread`);
            const res = await response.json();
 
@@ -21,9 +20,7 @@ function Sidebar() {
        }
 
 
-            // const filteredData = res.map(thread => ({threadId: thread.threadId, title: thread.title}));
-            // //console.log(filteredData);
-            // setAllThreads(filteredData);
+           
         } catch(err) {
             console.log(err);
         }
@@ -47,7 +44,6 @@ function Sidebar() {
 
         try {
 
-            // const response = await fetch(`${import.meta.env.VITE_API_URL}/thread/${newThreadId}`);
             const response=await fetch(`http://ec2-13-51-241-12.eu-north-1.compute.amazonaws.com:8080/api/thread/${newThreadId}`);
             const res = await response.json();
             console.log(res);
@@ -61,7 +57,6 @@ function Sidebar() {
 
     const deleteThread = async (threadId) => {
         try {
-            // const response = await fetch(`${import.meta.env.VITE_API_URL}/thread/${threadId}`, {method: "DELETE"});
             const response=await fetch(`http://ec2-13-51-241-12.eu-north-1.compute.amazonaws.com:8080/api/thread/${threadId}`, {method: "DELETE"});
             const res = await response.json();
             console.log(res);
