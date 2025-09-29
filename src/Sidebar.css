@@ -122,9 +122,17 @@ button:hover {
     /* Add a hamburger button in navbar (ChatWindow.jsx) to toggle .hidden class */
 }
 .Smile {
-    font-size: 2rem; /* larger than default */
-    color: #fff; /* white icon */
-    background-color: #111; /* dark background so it’s visible */
-    padding: 0.2rem;
-    border-radius: 0.3rem; /* optional, for rounded background */
+  width: 50px;            /* control size */
+  height: 50px;           /* keep consistent */
+  object-fit: contain;    /* makes sure logo doesn’t stretch */
+  border-radius: 8px;     /* optional, gives rounded corners */
+  padding: 6px;           /* spacing inside */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
+.Smile:hover {
+  transform: scale(1.1);  /* subtle zoom on hover */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15); /* hover shadow */
+  cursor: pointer;
+}
+
