@@ -76,7 +76,9 @@ function Sidebar() {
     return (
         <section className="sidebar">
             <button onClick={createNewChat}>
-             <img src="/openAi.logo.jpeg" alt="ChatGPT Logo" className="Smile" />
+
+             <img src="ChatGPT-Logo-1024x576.webp" alt="ChatGPT Logo" className="Smile" />
+             
                 <span><i className="fa-solid fa-pen-to-square"></i></span>
             </button>
 

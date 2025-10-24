@@ -123,7 +123,8 @@ button:hover {
 }
 .Smile {
   width: 50px;            /* control size */
-  height: 50px;           /* keep consistent */
+  height: 50px;   
+  background-color:black;        /* keep consistent */
   object-fit: contain;    /* makes sure logo doesn’t stretch */
   border-radius: 8px;     /* optional, gives rounded corners */
   padding: 6px;           /* spacing inside */
